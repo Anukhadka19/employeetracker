@@ -153,12 +153,29 @@ function addEmployee() {
 .then(function (answers) {
     connection.query("insert into employee (first_name, last_name, role_id, manager_id) values" (`${answers.firstName}, ${answers.lastName}, ${answers.roleId}, ${answers.managerId}`), function(error,data) {
     console.table(error, data);    
-})
+    })
 })   
 
 // Update employee and their role
+function updateEmployee() {
+    inquirer.prompt([
+        {
+        type:"input",
+        name:"empUpdate",
+        message:"Select employee to update."
+        },
+        {
+        type:"input",
+        name:"roleUpdate",
+        message:"Select the new role for the employee."     
+        }
+    ])
+}
+.then(function (answers) {
+    connection.query("update employees set role_id"(`${answers.empUpdate}, ${answers.roleUpdate}`), function(error,data) {
+        console.table(error, data);    
+    })  
+});
 
-
-
-
+init();
 
