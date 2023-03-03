@@ -74,14 +74,14 @@ function viewAllRoles() {
 // View employees
 function viewEmployees(){
     connection.query("select * from employee",function(error,data) {
-        console.table(error, data);
+        console.log(error, data);
     });
 }
 
 // View departments
 function viewDepartments(){
     connection.query("select * from department",function(error,data) {
-        console.table(error, data);
+        console.log(error, data);
     });
 }
 
@@ -92,12 +92,13 @@ function addDepartment() {
         name:"department",
         message:"Enter the name of the department."
     })
-}
+
     .then (function(response) {
     connection.query("insert into department (dep_name) values" (`${answers.department}`),function(error,data) {
-        console.table(error, data);    
+        console.log(error, data);    
         })
     })
+};
 
 // Add a role
 function addRole() {
@@ -118,12 +119,13 @@ function addRole() {
         message:"Enter the department id."
         }
     ])
-}
+
 .then(function (answers) {
     connection.query("insert into role (title, salary, dep_id) values" (`${answers.role}, ${answers.salary}, ${answers.department}`), function(error,data) {
-        console.table(error, data);    
+        console.log(error, data);    
         })
     })
+};
 
 // Add an employee
 function addEmployee() {
@@ -149,12 +151,13 @@ function addEmployee() {
         message:"Enter manager's information."    
         }
     ])
-}
+
 .then(function (answers) {
     connection.query("insert into employee (first_name, last_name, role_id, manager_id) values" (`${answers.firstName}, ${answers.lastName}, ${answers.roleId}, ${answers.managerId}`), function(error,data) {
-    console.table(error, data);    
+    console.log(error, data);    
     })
-})   
+})
+};   
 
 // Update employee and their role
 function updateEmployee() {
@@ -170,12 +173,13 @@ function updateEmployee() {
         message:"Select the new role for the employee."     
         }
     ])
-}
+
 .then(function (answers) {
     connection.query("update employees set role_id"(`${answers.empUpdate}, ${answers.roleUpdate}`), function(error,data) {
-        console.table(error, data);    
+        console.log(error, data);    
     })  
-});
+})
+};
 
 init();
 

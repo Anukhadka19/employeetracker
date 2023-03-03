@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/Anukhadka19/employeetracker#readme",
   "dependencies": {
-    "inquirer": "^9.1.4",
+    "inquirer": "^8.2.4",
     "mysql2": "^2.3.3"
   }
 }
